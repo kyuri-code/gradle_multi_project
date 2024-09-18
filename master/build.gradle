@@ -1,0 +1,61 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        // Gradleビルドスクリプトで使用するプラグインやライブラリをビルド時にクラスパスに追加するために使用される
+        // boot-gradle-pluginはSpringBootアプリケーションのビルドやパッケージング、実行、テストをサポート
+        // gradleのビルドスクリプトで使用可能となりビルドプロセスに関数やクラス、リソースを提供する。
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:3.2.1"
+    }
+}
+
+allprojects {
+    // Javaプラグイン
+    apply plugin:'java'
+    apply plugin:'java-library'
+    apply plugin:'java-base'
+
+    // SpringBoot関連のプラグイン
+    apply plugin:'io.spring.dependency-management'
+
+    sourceCompatibility = JavaVersion.VERSION_17
+    java {
+        toolchain {
+            languageVersion.set(JavaLanguageVersion.of(17))
+        }
+    }
+
+    compileJava.options.encoding = 'UTF-8'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.boot:spring-boot-dependencies:3.2.1"
+        }
+    }
+
+    // ローカル実行で出力を確認するためコメントアウト
+//    configurations {
+//        configureEach {
+//            exclude group: 'org.springframework.boot', module: 'spring-boot-starter-logging'
+//        }
+//    }
+
+    dependencies {
+        implementation platform('software.amazon.awssdk:bom:2.22.5')
+
+        testImplementation platform('org.junit:junit-bom:5.10.0')
+        testImplementation 'org.junit.jupiter:junit-jupiter'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+}

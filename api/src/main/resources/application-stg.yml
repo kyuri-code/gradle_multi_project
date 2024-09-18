@@ -1,0 +1,18 @@
+spring:
+  batch:
+    job:
+      enabled: true
+    jdbc:
+      initialize-schema: never
+  datasource:
+    url: ""
+    driver-class-name: ""
+  config:
+    import:
+      - optional:application-module_stg.yml
+  main:
+#    allow-bean-definition-overriding:
+    lazy-initialization: true
+custom:
+  app:
+    message: "Application.yml Staging config"

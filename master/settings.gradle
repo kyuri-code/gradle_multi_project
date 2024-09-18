@@ -1,0 +1,3 @@
+rootProject.name = 'master'
+includeFlat 'api'
+project(':api').projectDir = new File(settingsDir, '../api')
