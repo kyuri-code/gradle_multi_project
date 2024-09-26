@@ -21,8 +21,8 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 
-@Configuration
-@Import({NoArgsFunction.class})
+// @Configuration
+// @Import({NoArgsFunction.class})
 public class AppConfig {
 
     @Bean
