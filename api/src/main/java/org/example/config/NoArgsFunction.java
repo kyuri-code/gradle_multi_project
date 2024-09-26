@@ -10,16 +10,16 @@ import org.springframework.context.annotation.Configuration;
 import java.util.UUID;
 import java.util.function.Supplier;
 
-@Configuration
+// @Configuration
 public class NoArgsFunction {
 
-    @Autowired
+    // @Autowired
     JobRepository jobRepository;
 
-    @Autowired
+    // @Autowired
     Job job;
 
-    @Bean
+    // @Bean
     public Supplier<Void> nonArgsSupplier() {
         return () -> {
             try {

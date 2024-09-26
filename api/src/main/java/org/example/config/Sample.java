@@ -26,7 +26,7 @@ public class Sample {
     @Bean
     public Supplier<Void> method1() {
         return () -> {
-            System.out.println("hello world from method1");
+            logger.info("hello world from method1");
             return null;
         };
     }
@@ -34,7 +34,7 @@ public class Sample {
     @Bean
     public Supplier<Void> method2() {
         return () -> {
-            System.out.println("hello world from method2");
+            logger.info("hello world from method2");
             return null;
         };
     }
