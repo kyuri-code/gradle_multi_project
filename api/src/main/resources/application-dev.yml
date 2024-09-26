@@ -15,7 +15,7 @@ spring:
     lazy-initialization: true
   cloud:
     function:
-      definition: method1;method2;nonArgsSupplier
+      definition: method1;method2;
 custom:
   app:
     message: "Application.yml Development config"
