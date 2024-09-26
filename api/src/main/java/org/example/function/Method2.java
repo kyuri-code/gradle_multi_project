@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class Method2 extends AbstractFunction<Void>{
-// public class Method2 implements Supplier<Void>{
 
     private static final String PROCESS_NAME = "メソッド２";
 
