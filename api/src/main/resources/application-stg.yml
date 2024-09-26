@@ -13,6 +13,9 @@ spring:
   main:
 #    allow-bean-definition-overriding:
     lazy-initialization: true
+  cloud:
+    function:
+      definition: method1;method2;nonArgsSupplier
 custom:
   app:
     message: "Application.yml Staging config"
