@@ -27,7 +27,7 @@ phases:
       - ./gradlew :${MODULE_NAME}:shadowJar
       - cd ../${MODULE_NAME}
       - BASE_DIRECTORY=$(pwd)
-  post_buid:
+  post_build:
     commands:
       - echo Build completed on `date`
       - aws lambda update-function-code --function-name ${LAMBDA_FUNCTION_NAME} --zip-file fileb://build/libs/${MODULE_NAME}-sample.jar
