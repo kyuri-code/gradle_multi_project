@@ -8,7 +8,6 @@ import org.springframework.batch.core.Step;
 import org.springframework.batch.core.job.builder.JobBuilder;
 import org.springframework.batch.core.listener.JobParameterExecutionContextCopyListener;
 import org.springframework.batch.core.repository.JobRepository;
-import org.springframework.batch.core.repository.support.JobRepositoryFactoryBean;
 import org.springframework.batch.core.step.builder.StepBuilder;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -21,11 +20,11 @@ import org.springframework.transaction.PlatformTransactionManager;
 
 import javax.sql.DataSource;
 
-// @Configuration
-// @Import({NoArgsFunction.class})
+@Configuration
+@Import({NoArgsFunction.class})
 public class AppConfig {
 
-    // @Bean
+    @Bean
     public DataSource dataSource() {
         // Using in-memory H2 database to simulate no persistence
         return new EmbeddedDatabaseBuilder()
@@ -37,7 +36,7 @@ public class AppConfig {
 
     private static final Logger logger = LoggerFactory.getLogger(AppConfig.class);
 
-    // @Bean
+    @Bean
     Job job(final JobRepository jobRepository,
             @Qualifier("step") final Step step) {
         logger.info("job");
@@ -46,7 +45,7 @@ public class AppConfig {
                 .build();
     }
 
-    // @Bean
+    @Bean
     Step step(final JobRepository jobRepository,
               @Qualifier("sampleTasklet") final Tasklet sampleTasklet,
               final PlatformTransactionManager transactionManager) {
@@ -58,7 +57,7 @@ public class AppConfig {
                 .build();
     }
 
-    // @Bean
+    @Bean
     SampleTasklet sampleTasklet() {
         return new SampleTasklet();
     }

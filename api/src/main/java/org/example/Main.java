@@ -12,11 +12,9 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 
-// @Import(AppConfig.class)
-// @SpringBootConfiguration
-// @EnableAutoConfiguration
-@Import(Sample.class)
-@SpringBootApplication
+@Import(AppConfig.class)
+@SpringBootConfiguration
+@EnableAutoConfiguration
 public class Main {
 
     public static void main(final String[] args) {
@@ -24,13 +22,4 @@ public class Main {
                 .web(WebApplicationType.NONE)
                 .run(args);
     }
-
-    // @Bean
-    // public Method1 method1() {
-    //     return new Method1();
-    // }
-
-    // @Bean Method2 method2() {
-    //     return new Method2();
-    // }
 }
