@@ -33,11 +33,18 @@ phases:
     commands:
       - echo Build completed on `date`
       - aws lambda update-function-code --function-name ${LAMBDA_FUNCTION_NAME} --zip-file fileb://build/libs/${MODULE_NAME}-sample.jar
+# ビルドプロセスの後に保存する成果物の取り扱いを定義
+# ビルドが成功した後にCodeBuildによってS3などの指定された場所に保存されます
+
 artifacts:
   base-directory: ${BASE_DIRECTORY} 
-  discard-paths: yes
+  discard-paths: yes # ファイル構造を無視する
   files:
     - build/libs/${MODULE_NAME}-sample.jar
+# CodeBuildのビルド間で再利用するキャッシュの設定
+# キャッシュを使用することで、再ビルド時に依存関係を再ダウンロードせずに済み、ビルド時間が短縮される
 cache:
   paths:
+    # 依存関係やビルド結果をキャッシュするために利用される
+    # ビルド中にダウンロードされた依存ライブラリやビルドされたファイルが保存される
     - '/root/.gradle/caches/**/*'

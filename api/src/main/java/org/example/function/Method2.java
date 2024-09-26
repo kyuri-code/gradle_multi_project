@@ -1,0 +1,23 @@
+package org.example.function;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public class Method2 extends AbstractFunction<Void>{
+    
+    private static final String PROCESS_NAME = "メソッド２";
+
+    private final String message = "hello world from method2";
+
+    private final Logger logger = LoggerFactory.getLogger(Method2.class);
+
+    public Method2() {
+        super(PROCESS_NAME);
+    }
+
+    @Override
+    protected Void execute() throws Exception {
+        logger.info(message);
+        return null;
+    }
+}
