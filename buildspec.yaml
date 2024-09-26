@@ -1,0 +1,41 @@
+version: 0.2
+
+env:
+  variables:
+    MODULE_NAME: api
+phases:
+  install:
+    runtime-versions:
+      java: corretto17
+    commands:
+      - pip install git-remote-codecommit
+  pre_build:
+    commands:
+      - echo git clone
+      - echo "[profile codecommit-account]" > .awscli-config
+      - echo "role_arn = ${ASSUME_ROLE_ARN}" >> .awscli-config
+      - echo "credential_source = EcsContainer" >> .awscli-config
+      - export AWS_CONFIG_FILE=${CODEBUILD_SRC_DIR}/.awscli-config
+      - cd ..
+      - cp -R ${CODEBUILD_SRC_DIR} ./${MODULE_NAME}
+      - git clone -b ${BRANCH} https://github.com/${GIT_USERNAME}/${GIT_REPOSITORYNAME}
+      - chmod +x ./master/gradlew
+  build:
+    commands:
+      - echo Build started on `date`
+      - cd master
+      - ./gradlew :${MODULE_NAME}:shadowJar
+      - cd ../${MODULE_NAME}
+      - BASE_DIRECTORY=$(pwd)
+  post_buid:
+    commands:
+      - echo Build completed on `date`
+      - aws lambda update-function-code --function-name ${LAMBDA_FUNCTION_NAME} --zip-file fileb://build/libs/${MODULE_NAME}-sample.jar
+artifacts:
+  base-directory: ${BASE_DIRECTORY} 
+  discard-paths: yes
+  files:
+    - build/libs/${MODULE_NAME}-sample.jar
+cache:
+  paths:
+    - '/root/.gradle/caches/**/*'

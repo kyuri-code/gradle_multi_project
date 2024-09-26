@@ -20,6 +20,8 @@ apply plugin: 'com.github.johnrengelman.shadow'
 shadowJar {
     archiveClassifier.set('sample')
     // Required for Spring
+    // Lambdaレイヤーに必要ライブラリを登録するのではなく、
+    // 単一のjarファイルだけでSprintBootを実行したい場合は必要
 //    mergeServiceFiles()
 //    append 'META-INF/spring.handlers'
 //    append 'META-INF/spring.schemas'
@@ -43,6 +45,8 @@ dependencies {
     compileOnly 'org.springframework.boot:spring-boot-starter-jdbc'
     compileOnly 'com.h2database:h2:2.2.224'
 
+    // Lambdaレイヤーに必要ライブラリを登録するのではなく、
+    // 単一のjarファイルだけでSprintBootを実行したい場合は下記の設定が必要となり、compileOnlyはコメントアウト
 //    implementation 'org.springframework.boot:spring-boot-starter-batch'
 //    implementation 'org.springframework.boot:spring-boot-starter-jdbc'
 //    implementation 'com.h2database:h2'
@@ -51,6 +55,9 @@ dependencies {
     compileOnly "com.amazonaws:aws-lambda-java-core:1.2.3"
     compileOnly "com.amazonaws:aws-lambda-java-events:3.11.4"
     compileOnly "org.springframework.cloud:spring-cloud-function-adapter-aws:4.0.5"
+
+    // Lambdaレイヤーに必要ライブラリを登録するのではなく、
+    // 単一のjarファイルだけでSprintBootを実行したい場合は下記の設定が必要となり、compileOnlyはコメントアウト
 //    implementation 'com.amazonaws:aws-lambda-java-core:1.2.3'
 //    implementation 'com.amazonaws:aws-lambda-java-events:3.11.4'
 //    implementation 'org.springframework.cloud:spring-cloud-function-adapter-aws:4.0.5'
