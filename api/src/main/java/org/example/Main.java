@@ -1,15 +1,9 @@
 package org.example;
 
-import org.example.config.AppConfig;
 import org.example.config.Sample;
-import org.example.function.Method1;
-import org.example.function.Method2;
-import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.WebApplicationType;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Import;
 
 @Import(Sample.class)
