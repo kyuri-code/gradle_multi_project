@@ -11,14 +11,17 @@ phases:
       - pip install git-remote-codecommit
   pre_build:
     commands:
-      - echo git clone
+      - echo git clone 
       - echo "[profile codecommit-account]" > .awscli-config
       - echo "role_arn = ${ASSUME_ROLE_ARN}" >> .awscli-config
       - echo "credential_source = EcsContainer" >> .awscli-config
       - export AWS_CONFIG_FILE=${CODEBUILD_SRC_DIR}/.awscli-config
       - cd ..
       - cp -R ${CODEBUILD_SRC_DIR} ./${MODULE_NAME}
+      - echo ${GIT_USERNAME}
+      - echo ${GIT_REPOSITORYNAME}
       - git clone -b ${BRANCH} https://github.com/${GIT_USERNAME}/${GIT_REPOSITORYNAME}
+      - ls ./ -al
       - chmod +x ./master/gradlew
   build:
     commands:
