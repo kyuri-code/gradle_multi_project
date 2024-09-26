@@ -18,15 +18,14 @@ phases:
       - export AWS_CONFIG_FILE=${CODEBUILD_SRC_DIR}/.awscli-config
       - cd ..
       - cp -R ${CODEBUILD_SRC_DIR} ./${MODULE_NAME}
-      - echo ${GIT_USERNAME}
-      - echo ${GIT_REPOSITORYNAME}
       - git clone -b ${BRANCH} https://github.com/${GIT_USERNAME}/${GIT_REPOSITORYNAME}
+      - PROJECT_NAME=$(basename ${GIT_REPOSITORYNAME} .git)
       - ls ./ -al
-      - chmod +x ./master/gradlew
+      - chmod +x ./${PROJECT_NAME}/master/gradlew
   build:
     commands:
       - echo Build started on `date`
-      - cd master
+      - cd ./${PROJECT_NAME}/master
       - ./gradlew :${MODULE_NAME}:shadowJar
       - cd ../${MODULE_NAME}
       - BASE_DIRECTORY=$(pwd)
