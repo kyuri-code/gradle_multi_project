@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Import;
 // @Import(AppConfig.class)
 // @SpringBootConfiguration
 // @EnableAutoConfiguration
-@Import(Sample.class)
+// @Import(Sample.class)
 @SpringBootApplication
 public class Main {
 

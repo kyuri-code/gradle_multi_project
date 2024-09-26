@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration
+// @Configuration
 public class Sample {
 
     private final Logger logger = LoggerFactory.getLogger(Sample.class);
@@ -23,7 +23,7 @@ public class Sample {
     //     return new Method2();
     // }
 
-    @Bean
+    // @Bean
     public Supplier<Void> method1() {
         return () -> {
             logger.info("hello world from method1");
@@ -31,7 +31,7 @@ public class Sample {
         };
     }
 
-    @Bean
+    // @Bean
     public Supplier<Void> method2() {
         return () -> {
             logger.info("hello world from method2");
