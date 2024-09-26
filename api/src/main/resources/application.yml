@@ -13,9 +13,6 @@ spring:
   main:
     # allow-bean-definition-overriding: true
    lazy-initialization: true
-  cloud:
-    function:
-      definition: method1;method2;
 custom:
   app:
     message: "Application.yml default config"
