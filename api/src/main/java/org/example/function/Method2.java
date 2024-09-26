@@ -7,8 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
 @Component
-// public class Method2 extends AbstractFunction<Void>{
-public class Method2 implements Supplier<Void>{
+public class Method2 extends AbstractFunction<Void>{
+// public class Method2 implements Supplier<Void>{
 
     private static final String PROCESS_NAME = "メソッド２";
 
@@ -22,13 +22,13 @@ public class Method2 implements Supplier<Void>{
         return null;
     }
 
-    // public Method2() {
-    //     super(PROCESS_NAME);
-    // }
+    public Method2() {
+        super(PROCESS_NAME);
+    }
 
-    // @Override
-    // protected Void execute() throws Exception {
-    //     logger.info(message);
-    //     return null;
-    // }
+    @Override
+    protected Void execute() throws Exception {
+        logger.info(message);
+        return null;
+    }
 }
