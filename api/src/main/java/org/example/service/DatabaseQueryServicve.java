@@ -7,8 +7,11 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 
+import javax.sql.DataSource;
+
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.stereotype.Service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -60,7 +63,7 @@ public class DatabaseQueryServicve {
         }
 
         String host = secretMap.get("host");
-        String port = String.valueOf(secretMap.get("port"));
+        String port = secretMap.get("port").toString();
         String username = secretMap.get("username");
         String password = secretMap.get("password");
 
@@ -71,8 +74,11 @@ public class DatabaseQueryServicve {
         } catch (Exception e) {
             throw new RuntimeException("Cannot find suitable sql driver", e);
         }
-        try(Connection connection = DriverManager.getConnection(url, username, password)) {
-            JdbcTemplate jdbcTemplate = new JdbcTemplate();
+
+        DataSource dataSource = new DriverManagerDataSource(url,username,password);
+
+        try {
+            JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
             return jdbcTemplate.query(SQL, new RowMapper<String>() {
                 @Override
                 public String mapRow(@SuppressWarnings("null") ResultSet rs, int rowNum) throws SQLException {
