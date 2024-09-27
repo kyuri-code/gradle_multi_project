@@ -55,6 +55,12 @@ dependencies {
     compileOnly "com.amazonaws:aws-lambda-java-core:1.2.3"
     compileOnly "com.amazonaws:aws-lambda-java-events:3.11.4"
     compileOnly "org.springframework.cloud:spring-cloud-function-adapter-aws:4.0.5"
+    compileOnly "software.amazon.awssdk:secretsmanager"
+    compileOnly "com.amazonaws.secretsmanager:aws-secretsmanager-jdbc:2.0.0"
+
+    // postgreSQL
+    compileOnly "org.postgresql:postgresql"
+    
 
     // Lambdaレイヤーに必要ライブラリを登録するのではなく、
     // 単一のjarファイルだけでSprintBootを実行したい場合は下記の設定が必要となり、compileOnlyはコメントアウト
