@@ -55,8 +55,8 @@ dependencies {
     compileOnly "com.amazonaws:aws-lambda-java-core:1.2.3"
     compileOnly "com.amazonaws:aws-lambda-java-events:3.11.4"
     compileOnly "org.springframework.cloud:spring-cloud-function-adapter-aws:4.0.5"
-    compileOnly "com.amazonaws.secretsmanager:aws-secretsmanager-jdbc:2.0.0"
-    implementation "software.amazon.awssdk:secretsmanager"
+    compileOnly "software.amazon.awssdk:secretsmanager:2.20.120"
+    compileOnly "software.amazon.awssdk:regions:2.20.120"
 
     // postgreSQL
     compileOnly "org.postgresql:postgresql"
