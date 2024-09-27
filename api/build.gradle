@@ -22,16 +22,16 @@ shadowJar {
     // Required for Spring
     // Lambdaレイヤーに必要ライブラリを登録するのではなく、
     // 単一のjarファイルだけでSprintBootを実行したい場合は必要
-//    mergeServiceFiles()
-//    append 'META-INF/spring.handlers'
-//    append 'META-INF/spring.schemas'
-//    append 'META-INF/spring.tooling'
-//    append 'META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports'
-//    append 'META-INF/spring/org.springframework.boot.actuate.autoconfigure.web.ManagementContextConfiguration.imports'
-//    transform(PropertiesFileTransformer) {
-//        paths = ['META-INF/spring.factories']
-//        mergeStrategy = "append"
-//    }
+   mergeServiceFiles()
+   append 'META-INF/spring.handlers'
+   append 'META-INF/spring.schemas'
+   append 'META-INF/spring.tooling'
+   append 'META-INF/spring/org.springframework.boot.autoconfigure.AutoConfiguration.imports'
+   append 'META-INF/spring/org.springframework.boot.actuate.autoconfigure.web.ManagementContextConfiguration.imports'
+   transform(PropertiesFileTransformer) {
+       paths = ['META-INF/spring.factories']
+       mergeStrategy = "append"
+   }
     manifest {
         attributes(
                 'Main-Class': 'org.example.Main'
@@ -59,7 +59,7 @@ dependencies {
     compileOnly "software.amazon.awssdk:regions:2.28.6"
 
     // postgreSQL
-    compileOnly "org.postgresql:postgresql:42.7.4"
+    implementation "org.postgresql:postgresql:42.7.4"
     
 
     // Lambdaレイヤーに必要ライブラリを登録するのではなく、
