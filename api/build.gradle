@@ -55,11 +55,11 @@ dependencies {
     compileOnly "com.amazonaws:aws-lambda-java-core:1.2.3"
     compileOnly "com.amazonaws:aws-lambda-java-events:3.11.4"
     compileOnly "org.springframework.cloud:spring-cloud-function-adapter-aws:4.0.5"
-    compileOnly "software.amazon.awssdk:secretsmanager:2.20.120"
-    compileOnly "software.amazon.awssdk:regions:2.20.120"
+    compileOnly "software.amazon.awssdk:secretsmanager:2.27.24"
+    compileOnly "software.amazon.awssdk:regions:2.28.6"
 
     // postgreSQL
-    compileOnly "org.postgresql:postgresql"
+    compileOnly "org.postgresql:postgresql:42.7.4"
     
 
     // Lambdaレイヤーに必要ライブラリを登録するのではなく、
