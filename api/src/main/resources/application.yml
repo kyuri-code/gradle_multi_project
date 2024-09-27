@@ -5,8 +5,7 @@ spring:
     jdbc:
       initialize-schema: never
   datasource:
-    url: ""
-    username: ""
+    initialize: false
   config:
     import:
       - optional:application-module.yml

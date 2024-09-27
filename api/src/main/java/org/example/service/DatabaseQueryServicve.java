@@ -27,7 +27,7 @@ public class DatabaseQueryServicve {
 
     private final String SQL = "SELECT * FROM sample_table";
 
-    private final String DBNAME = "sample";
+    private final String DBNAME = "sample_db";
 
     @SuppressWarnings("unchecked")
     public List<String> getDataFromDatabase() {
@@ -60,7 +60,7 @@ public class DatabaseQueryServicve {
         }
 
         String host = secretMap.get("host");
-        String port = secretMap.get("port");
+        String port = String.valueOf(secretMap.get("port"));
         String username = secretMap.get("username");
         String password = secretMap.get("password");
 
