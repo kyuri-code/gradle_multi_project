@@ -5,9 +5,8 @@ spring:
     jdbc:
       initialize-schema: never
   datasource:
-    url: jdbc-secretsmanager:postgresql://si-dev-pgsql153.cayq42jmc6ys.ap-northeast-1.rds.amazonaws.com:5234
-    driver-class-name: "com.amazonaws.secretsmanager.sql.AWSSecretsManagerPostgreSQLDriver"
-    username: td-nt-iac-tribeck
+    url: ""
+    username: ""
   config:
     import:
       - optional:application-module.yml
