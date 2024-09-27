@@ -63,7 +63,7 @@ public class DatabaseQueryServicve {
         }
 
         String host = secretMap.get("host");
-        String port = secretMap.get("port").toString();
+        String port = String.valueOf(secretMap.get("port"));
         String username = secretMap.get("username");
         String password = secretMap.get("password");
 
