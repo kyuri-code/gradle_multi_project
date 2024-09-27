@@ -1,5 +1,6 @@
 package org.example.function;
 
+import org.example.service.DatabaseQueryServicve;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -13,19 +14,18 @@ public class Method2 extends AbstractFunction<Void>{
 
     private final Logger logger = LoggerFactory.getLogger(Method2.class);
 
-    @Override
-    public Void get() {
-        logger.info(message);
-        return null;
-    }
+    private final DatabaseQueryServicve databaseQueryServicve;
 
-    public Method2() {
+    public Method2(DatabaseQueryServicve databaseQueryServicve) {
         super(PROCESS_NAME);
+        this.databaseQueryServicve = databaseQueryServicve;
     }
 
     @Override
     protected Void execute() throws Exception {
         logger.info(message);
+        String name = databaseQueryServicve.getDataFromDatabase().get(0);
+        logger.info("name column : " + name);
         return null;
     }
 }

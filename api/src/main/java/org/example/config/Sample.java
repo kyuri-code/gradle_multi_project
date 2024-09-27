@@ -2,6 +2,7 @@ package org.example.config;
 
 import org.example.function.Method1;
 import org.example.function.Method2;
+import org.example.service.DatabaseQueryServicve;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -14,7 +15,7 @@ public class Sample {
     }
 
     @Bean
-    Method2 method2() {
-        return new Method2();
+    Method2 method2(DatabaseQueryServicve databaseQueryService) {
+        return new Method2(databaseQueryService);
     }
 }
