@@ -66,6 +66,11 @@ public class DatabaseQueryServicve {
 
         String url = "jdbc:postgresql://" + host + ":" + port + "/" + DBNAME;
 
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (Exception e) {
+            throw new RuntimeException("Cannot find suitable sql driver", e);
+        }
         try(Connection connection = DriverManager.getConnection(url, username, password)) {
             JdbcTemplate jdbcTemplate = new JdbcTemplate();
             return jdbcTemplate.query(SQL, new RowMapper<String>() {
