@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
 import java.util.Map;
 
@@ -33,7 +34,7 @@ public class DatabaseQueryServicve {
     private final String DBNAME = "sample_db";
 
     @SuppressWarnings("unchecked")
-    public List<String> getDataFromDatabase() {
+    public String getDataFromDatabase() {
         
         SecretsManagerClient client = SecretsManagerClient.builder()
                 .region(REGION)
@@ -69,22 +70,11 @@ public class DatabaseQueryServicve {
 
         String url = "jdbc:postgresql://" + host + ":" + port + "/" + DBNAME;
 
-        try {
-            Class.forName("org.postgresql.Driver");
-        } catch (Exception e) {
-            throw new RuntimeException("Cannot find suitable sql driver", e);
-        }
-
-        DataSource dataSource = new DriverManagerDataSource(url,username,password);
-
-        try {
-            JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
-            return jdbcTemplate.query(SQL, new RowMapper<String>() {
-                @Override
-                public String mapRow(@SuppressWarnings("null") ResultSet rs, int rowNum) throws SQLException {
-                    return rs.getString("name");
-                }
-            });
+        try(Connection conn = DriverManager.getConnection(url, username, password);
+                Statement stmt = conn.createStatement();
+                ResultSet rs = stmt.executeQuery(SQL) ) {
+            rs.next();
+            return rs.getString("name");
         } catch (Exception e) {
             throw new RuntimeException("Failed to connect ot the database or execute query", e);
         }

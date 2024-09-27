@@ -24,7 +24,7 @@ public class Method2 extends AbstractFunction<Void>{
     @Override
     protected Void execute() throws Exception {
         logger.info(message);
-        String name = databaseQueryServicve.getDataFromDatabase().get(0);
+        String name = databaseQueryServicve.getDataFromDatabase();
         logger.info("name column : " + name);
         return null;
     }
