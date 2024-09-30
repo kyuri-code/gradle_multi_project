@@ -44,6 +44,8 @@ dependencies {
     compileOnly 'org.springframework.boot:spring-boot-starter-batch'
     compileOnly 'org.springframework.boot:spring-boot-starter-jdbc'
     compileOnly 'com.h2database:h2:2.2.224'
+    compileOnly 'org.projectlombok:lombok:1.18.34'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
 
     // Lambdaレイヤーに必要ライブラリを登録するのではなく、
     // 単一のjarファイルだけでSprintBootを実行したい場合は下記の設定が必要となり、compileOnlyはコメントアウト
@@ -57,9 +59,13 @@ dependencies {
     compileOnly "org.springframework.cloud:spring-cloud-function-adapter-aws:4.0.5"
     compileOnly "software.amazon.awssdk:secretsmanager:2.27.24"
     compileOnly "software.amazon.awssdk:regions:2.28.6"
+    compileOnly "software.amazon.jdbc:aws-advanced-jdbc-wrapper:2.4.0"
 
-    // postgreSQL
-    implementation "org.postgresql:postgresql:42.7.4"
+    // DB
+    compileOnly "org.postgresql:postgresql:42.7.4"
+    
+    // MyBatis
+    compileOnly "org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3"
     
 
     // Lambdaレイヤーに必要ライブラリを登録するのではなく、

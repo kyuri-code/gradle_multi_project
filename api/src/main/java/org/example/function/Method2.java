@@ -1,5 +1,8 @@
 package org.example.function;
 
+import java.util.List;
+
+import org.example.entity.SampleEntity;
 import org.example.service.DatabaseQueryServicve;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -24,8 +27,10 @@ public class Method2 extends AbstractFunction<Void>{
     @Override
     protected Void execute() throws Exception {
         logger.info(message);
-        String name = databaseQueryServicve.getDataFromDatabase();
-        logger.info("name column : " + name);
+        // String name = databaseQueryServicve.getDataFromDatabase();
+        // logger.info("name column : " + name);
+        List<SampleEntity> samples = databaseQueryServicve.getAllSamples();
+        logger.info("name column : " + samples.get(0).getName());
         return null;
     }
 }
