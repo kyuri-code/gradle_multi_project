@@ -5,7 +5,14 @@ spring:
     jdbc:
       initialize-schema: never
   datasource:
-    initialize: false
+    url: jdbc:aws-wrapper:postgresql://si-dev-pgsql153.cayq42jmc6ys.ap-northeast-1.rds.amazonaws.com:5432/sample_db
+    driver-class-name: software.amazon.jdbc.Driver
+    hikari:
+      data-source-properties:
+        wrapperPlugins: awsSecretsManager
+        secretsManagerSecretId: dev/si-dev-pgsql153/super-user
+        secretsManagerRegion: ap-northeast-1
+      exception-override-class-name: software.amazon.jdbc.util.HikariCPSQLException
   config:
     import:
       - optional:application-module_dev.yml

@@ -62,7 +62,7 @@ dependencies {
     compileOnly "software.amazon.jdbc:aws-advanced-jdbc-wrapper:2.4.0"
 
     // DB
-    implementation "org.postgresql:postgresql:42.7.4"
+    compileOnly "org.postgresql:postgresql:42.7.4"
     
     // MyBatis
     compileOnly "org.mybatis.spring.boot:mybatis-spring-boot-starter:3.0.3"
